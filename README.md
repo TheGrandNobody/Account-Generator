@@ -2,7 +2,4 @@
 This script generates a .csv file called *accounts.csv* containing a given number of ECDSA private keys and their associated Ethereum addresses. The private keys are generated using a cryptographically-secure pseudo random generator. 
 
 ## How to use this generator
-In order to use it, you simply need to open your terminal, navigate to the folder containing the script and run the script with the number of accounts you wish to create as an argument. For example, an individual wanting to generate 10 accounts would type this in their terminal:
-```
-python generator.py 10
-```
+In order to use it, there are three steps. Firstly, download this repository. Second, open the generator.py file and at the top of the file you will find five variables which require you to enter the number of accounts (NUMBER_OF_ACCOUNTS) you wish to create, the number of tokens (AMOUNT_OF_TOKENS) (for a 18-decimal token) that you wish to send per account, your token's address (TOKEN_ADDRESS), your wallet's address (YOUR_ADDRESS) and your private key (YOUR_KEY). Once you have pasted these five strings of information, you simply need to run the executable located in the dist folder.

@@ -5,11 +5,18 @@ import json
 from eth_account import Account
 from web3 import Web3
 
+# The amount of accounts you would like to create
+NUMBER_OF_ACCOUNTS = 1 # Type the number of accounts you want
+
+# The amount of tokens you would like to send per account
+AMOUNT_OF_TOKENS = 1  # Type the number of tokens you want, where 1 = 1 Token that has 18 decimals = 1 BEP20 token
 
 # The address of the token you would like to send to each address
 TOKEN_ADDRESS = '' # Paste the BSC address of whatever token you want to send, in between the two quotation marks
+
 # The address of the wallet sending tokens
 YOUR_ADDRESS = '' # Paste your wallet's address in between the two quotation marks
+
 # The private key of your account from which you are sending tokens
 YOUR_KEY = '' # Paste your private key in between the two quotation marks
 
@@ -30,7 +37,7 @@ with open('accounts.csv', 'w') as file:
     # Write the header row on the csv
     writer.writerow(['Address', 'Private Key'])
     # Write a row containing a randomly generated address and private key for the specified number of times
-    for i in range(int(sys.argv[1])):
+    for i in range(NUMBER_OF_ACCOUNTS):
         # First we create an account with a secure key
         acc = Account.create(secrets.randbits(256))
         # Write a row containing the generated key + address
@@ -40,7 +47,7 @@ with open('accounts.csv', 'w') as file:
         # Create a transaction
         transaction = token.functions.transfer(
             acc.address, # The address to which we send tokens to
-            w3.toWei(sys.argv[2], 'ether'), # The amount of tokens being sent 1 = 1 Token that has 18 decimals = 1 BNB
+            w3.toWei(AMOUNT_OF_TOKENS, 'ether'), # The amount of tokens being sent 1 = 1 Token that has 18 decimals = 1 BNB
         ).buildTransaction({
             'chainId': 56,  # If you change this to 97 it sets it to the Testnet. 56 is the Mainnet.
             'gas' : 2000000,
