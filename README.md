@@ -1,4 +1,4 @@
-# Ethereum Wallet Generator
+# Ethereum Wallet/Private Key/Address Generator
 This script generates a .csv file called *accounts.csv* containing a given number of ECDSA private keys and their associated Ethereum addresses. The private keys are generated using a cryptographically-secure pseudo random generator. 
 
 ## How to use this generator
