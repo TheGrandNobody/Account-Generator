@@ -6,4 +6,7 @@ In order to use it, there are three steps. Firstly, download this repository.
 
 Second, open the generator.py file and at the top of the file you will find five variables which require you to enter the number of accounts (NUMBER_OF_ACCOUNTS) you wish to create, the number of tokens (AMOUNT_OF_TOKENS) (for a 18-decimal token) that you wish to send per account, your token's address (TOKEN_ADDRESS), your wallet's address (YOUR_ADDRESS) and your private key (YOUR_KEY). 
 
-Once you have filled these five strings of information, you simply need to run the executable located in the dist folder.
+Once you have filled these five strings of information, you can either try to run the executable or simply open your terminal, navigate to the folder containing generator.py and type the command:
+```
+python generator.py
+```
