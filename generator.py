@@ -1,6 +1,5 @@
 import csv
 import secrets
-import sys
 import json
 from eth_account import Account
 from web3 import Web3
