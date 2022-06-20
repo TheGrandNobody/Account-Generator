@@ -1,5 +1,5 @@
-# Ethereum Wallet/Private Key/Address Generator
-This script generates a .csv file called *accounts.csv* containing a given number of ECDSA private keys and their associated Ethereum addresses. The private keys are generated using a cryptographically-secure pseudo random generator. Simultaneously, a given wallet address also sends a given amount of tokens to each generated new address.
+# ECDSA Private Key/Address Generator With Option To Transfer Tokens To Each Address
+This script generates a .csv file called *accounts.csv* containing a given number of ECDSA private keys and their associated addresses. The private keys are generated using a cryptographically-secure pseudo random generator. Simultaneously, a given wallet address also sends a given amount of tokens to each generated new address. By default, the script is configured to work with either the Mainnet or Testnet of Binance Smart Chain, but this code can be changed for any ECDSA-reliant Blockchain.
 
 ## How to use this generator
 In order to use it, there are three steps. Firstly, download this repository. 
