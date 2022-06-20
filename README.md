@@ -14,3 +14,6 @@ Then simply open your terminal,  containing generator.py and type the command:
 ```
 python generator.py
 ```
+
+# How to only create accounts and not send tokens
+You can turn off the token sending feature by setting SEND_TOKENS to False.
