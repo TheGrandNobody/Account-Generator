@@ -28,11 +28,12 @@ EIP20_ABI = json.loads('[{"anonymous":false,"inputs":[{"indexed":true,"internalT
 # Change this url to 'https://data-seed-prebsc-1-s1.binance.org:8545' if you want to use the BSC Testnet
 binance_url = 'https://bsc-dataseed.binance.org/' 
 w3 = Web3(Web3.HTTPProvider(binance_url))
+
 # Connect to the desired token's contract
 token = w3.eth.contract(address=TOKEN_ADDRESS, abi=EIP20_ABI)
+
 # Get your wallet's nonce 
 nonce = w3.eth.get_transaction_count(YOUR_ADDRESS) 
-
 
 # Create a new .csv file called "accounts.csv"
 with open('accounts.csv', 'w') as file:
