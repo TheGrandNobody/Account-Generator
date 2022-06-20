@@ -3,8 +3,10 @@ import secrets
 import json
 from eth_account import Account
 from web3 import Web3
+
 # If this is set to True, it will send tokens to each account
 SEND_TOKENS = True # Set this to False in order for it to only create accounts/keys
+
 # The amount of accounts you would like to create
 NUMBER_OF_ACCOUNTS = 50 # Type the number of accounts you want
 
@@ -42,7 +44,7 @@ with open('accounts.csv', 'w') as file:
     for i in range(NUMBER_OF_ACCOUNTS):
         # First we create an account with a secure key
         acc = Account.create(secrets.randbits(256))
-        if (SEND):
+        if (SEND_TOKENS):
             print('Sent transaction number ', i, ', ', NUMBER_OF_ACCOUNTS - ( i + 1 ), ' transactions left')
             # Write a row containing the generated key + address
             writer.writerow([acc.address, acc.privateKey.hex()[2:]])
