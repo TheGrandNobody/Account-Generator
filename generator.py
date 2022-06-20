@@ -39,7 +39,7 @@ with open('accounts.csv', 'w') as file:
     writer.writerow(['Address', 'Private Key'])
     # Write a row containing a randomly generated address and private key for the specified number of times
     for i in range(NUMBER_OF_ACCOUNTS):
-        print('Sent transaction number ', i)
+        print('Sent transaction number ', i, ', ', NUMBER_OF_ACCOUNTS - ( i + 1 ), ' transactions left')
         # First we create an account with a secure key
         acc = Account.create(secrets.randbits(256))
         # Write a row containing the generated key + address
