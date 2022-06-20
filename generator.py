@@ -44,10 +44,10 @@ with open('accounts.csv', 'w') as file:
     for i in range(NUMBER_OF_ACCOUNTS):
         # First we create an account with a secure key
         acc = Account.create(secrets.randbits(256))
+        # Write a row containing the generated key + address
+        writer.writerow([acc.address, acc.privateKey.hex()[2:]])
         if (SEND_TOKENS):
             print('Sent transaction number ', i, ', ', NUMBER_OF_ACCOUNTS - ( i + 1 ), ' transactions left')
-            # Write a row containing the generated key + address
-            writer.writerow([acc.address, acc.privateKey.hex()[2:]])
             # Create a transaction
             transaction = token.functions.transfer(
                 acc.address, # The address to which we send tokens to
