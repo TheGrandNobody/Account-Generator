@@ -1,5 +1,6 @@
 import csv
 import secrets
+import random
 import json
 from eth_account import Account
 from web3 import Web3
@@ -10,8 +11,10 @@ SEND_TOKENS = True # Set this to False in order for it to only create accounts/k
 # The amount of accounts you would like to create
 NUMBER_OF_ACCOUNTS = 50 # Type the number of accounts you want
 
-# The amount of tokens you would like to send per account
-AMOUNT_OF_TOKENS = 0.001  # Type the number of tokens you want, where 1 = 1 Token that has 18 decimals = 1 BEP20 token
+# The minimum amount of tokens you would like to any given account
+AMOUNT_OF_TOKENS_MIN = 0.001  # Type the number of tokens you want, where 1 = 1 Token that has 18 decimals = 1 BEP20 token
+# The maximum amount of tokens you would like to send to any given account
+AMOUNT_OF_TOKENS_MAX = 0.002  # Type the number of tokens you want, where 1 = 1 Token that has 18 decimals = 1 BEP20 token
 
 # The address of the token you would like to send to each address
 TOKEN_ADDRESS = '' # Paste the BSC address of whatever token you want to send, in between the two quotation marks
@@ -52,7 +55,7 @@ with open('accounts.csv', 'w') as file:
             # Create a transaction
             transaction = token.functions.transfer(
                 acc.address, # The address to which we send tokens to
-                w3.toWei(AMOUNT_OF_TOKENS, 'ether'), # The amount of tokens being sent 1 = 1 Token that has 18 decimals = 1 BNB
+                w3.toWei(random.randint(AMOUNT_OF_TOKENS_MIN, AMOUNT_OF_TOKENS_MAX), 'ether'), # The amount of tokens being sent 1 = 1 Token that has 18 decimals = 1 BNB
             ).buildTransaction({
                 'chainId': 56,  # If you change this to 97 it sets it to the Testnet. 56 is the Mainnet.
                 'gas' : 2000000,
