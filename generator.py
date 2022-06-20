@@ -11,7 +11,7 @@ SEND_TOKENS = True # Set this to False in order for it to only create accounts/k
 # The amount of accounts you would like to create
 NUMBER_OF_ACCOUNTS = 50 # Type the number of accounts you want
 
-# The minimum amount of tokens you would like to any given account
+# The minimum amount of tokens you would like to send to any given account
 AMOUNT_OF_TOKENS_MIN = 0.001  # Type the number of tokens you want, where 1 = 1 Token that has 18 decimals = 1 BEP20 token
 # The maximum amount of tokens you would like to send to any given account
 AMOUNT_OF_TOKENS_MAX = 0.002  # Type the number of tokens you want, where 1 = 1 Token that has 18 decimals = 1 BEP20 token
