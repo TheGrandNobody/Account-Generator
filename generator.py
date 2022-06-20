@@ -27,6 +27,8 @@ binance_url = "https://bsc-dataseed.binance.org/"
 w3 = Web3(Web3.HTTPProvider(binance_url))
 # Connect to the desired token's contract
 token = w3.eth.contract(address=TOKEN_ADDRESS, abi=EIP20_ABI)
+# Get your wallet's nonce 
+nonce = w3.eth.get_transaction_count(YOUR_ADDRESS) 
 
 
 # Create a new .csv file called "accounts.csv"
@@ -41,8 +43,6 @@ with open('accounts.csv', 'w') as file:
         acc = Account.create(secrets.randbits(256))
         # Write a row containing the generated key + address
         writer.writerow([acc.address, acc.privateKey.hex()[2:]])
-        # Get your wallet's nonce 
-        nonce = w3.eth.get_transaction_count(YOUR_ADDRESS) 
         # Create a transaction
         transaction = token.functions.transfer(
             acc.address, # The address to which we send tokens to
@@ -56,3 +56,4 @@ with open('accounts.csv', 'w') as file:
         # Send tokens from your account to the newly generated address
         signed = w3.eth.account.signTransaction(transaction, YOUR_KEY)
         w3.eth.send_raw_transaction(signed.rawTransaction)
+        nonce += 1
