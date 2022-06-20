@@ -32,7 +32,7 @@ token = w3.eth.contract(address=TOKEN_ADDRESS, abi=EIP20_ABI)
 # Create a new .csv file called "accounts.csv"
 with open('accounts.csv', 'w') as file:
     # Initialize the header
-    writer = csv.writer(file)
+    writer = csv.writer(file, delimiter=',')
     # Write the header row on the csv
     writer.writerow(['Address', 'Private Key'])
     # Write a row containing a randomly generated address and private key for the specified number of times
