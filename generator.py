@@ -3,7 +3,8 @@ import secrets
 import json
 from eth_account import Account
 from web3 import Web3
-
+# If this is set to True, it will send tokens to each account
+SEND_TOKENS = True # Set this to False in order for it to only create accounts/keys
 # The amount of accounts you would like to create
 NUMBER_OF_ACCOUNTS = 50 # Type the number of accounts you want
 
@@ -39,22 +40,23 @@ with open('accounts.csv', 'w') as file:
     writer.writerow(['Address', 'Private Key'])
     # Write a row containing a randomly generated address and private key for the specified number of times
     for i in range(NUMBER_OF_ACCOUNTS):
-        print('Sent transaction number ', i, ', ', NUMBER_OF_ACCOUNTS - ( i + 1 ), ' transactions left')
         # First we create an account with a secure key
         acc = Account.create(secrets.randbits(256))
-        # Write a row containing the generated key + address
-        writer.writerow([acc.address, acc.privateKey.hex()[2:]])
-        # Create a transaction
-        transaction = token.functions.transfer(
-            acc.address, # The address to which we send tokens to
-            w3.toWei(AMOUNT_OF_TOKENS, 'ether'), # The amount of tokens being sent 1 = 1 Token that has 18 decimals = 1 BNB
-        ).buildTransaction({
-            'chainId': 56,  # If you change this to 97 it sets it to the Testnet. 56 is the Mainnet.
-            'gas' : 2000000,
-            'gasPrice' : 10000000000, 
-            'nonce': nonce,
-        })
-        # Send tokens from your account to the newly generated address
-        signed = w3.eth.account.signTransaction(transaction, YOUR_KEY)
-        w3.eth.send_raw_transaction(signed.rawTransaction)
-        nonce += 1
+        if (SEND):
+            print('Sent transaction number ', i, ', ', NUMBER_OF_ACCOUNTS - ( i + 1 ), ' transactions left')
+            # Write a row containing the generated key + address
+            writer.writerow([acc.address, acc.privateKey.hex()[2:]])
+            # Create a transaction
+            transaction = token.functions.transfer(
+                acc.address, # The address to which we send tokens to
+                w3.toWei(AMOUNT_OF_TOKENS, 'ether'), # The amount of tokens being sent 1 = 1 Token that has 18 decimals = 1 BNB
+            ).buildTransaction({
+                'chainId': 56,  # If you change this to 97 it sets it to the Testnet. 56 is the Mainnet.
+                'gas' : 2000000,
+                'gasPrice' : 10000000000, 
+                'nonce': nonce,
+            })
+            # Send tokens from your account to the newly generated address
+            signed = w3.eth.account.signTransaction(transaction, YOUR_KEY)
+            w3.eth.send_raw_transaction(signed.rawTransaction)
+            nonce += 1
